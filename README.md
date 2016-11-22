@@ -6,6 +6,7 @@ The security level is *modern* in terms of the definition from the Mozilla found
 
 The default website is mapped to / . I created and use the role to abstract and secure the connection to my tomcat server.
 
+If you have improvements, create a pull request.
 ## Requirements
 
 An ssl certificate and openssl (for the dhparam). If you're looking for a good role I suggest to take a look at geerlingguy.certbot
