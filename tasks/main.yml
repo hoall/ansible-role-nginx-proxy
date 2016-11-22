@@ -17,7 +17,6 @@
 - name: change permissions for dhparams.pem
   file:
     path=/etc/ssl/certs/dhparams.pem
-    state=touch
     mode=600
 
 # make a safe default configuration
