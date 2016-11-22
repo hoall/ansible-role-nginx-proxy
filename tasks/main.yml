@@ -1,0 +1,45 @@
+---
+# tasks file for nginx-proxy/
+
+- name: install nginx
+  package:
+    name=nginx
+    state=present
+
+# see https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html for further information
+- name: generate Diffie Hellman Ephemeral Parameters
+  command: openssl dhparam -out dhparams.pem 4096
+    chdir=/etc/ssl/certs
+    creates=/etc/ssl/certs/dhparams.pem
+  notify:
+  - restart nginx
+
+- name: change permissions for dhparams.pem
+  file:
+    path=/etc/ssl/certs/dhparams.pem
+    state=touch
+    mode=600
+
+# make a safe default configuration
+- name: modify nginx server configuration
+  template:
+    src=nginx.conf.j2
+    dest=/etc/nginx/nginx.conf
+  notify:
+  - restart nginx
+
+- name: configure nginx website
+  template:
+    src=website.conf.j2
+    dest=/etc/nginx/sites-available/website.conf
+  notify:
+  - restart nginx
+
+- name: activate website
+  file:
+    state=link
+    src=/etc/nginx/sites-available/website.conf
+    dest=/etc/nginx/sites-enabled/website
+  notify:
+  - restart nginx
+
