@@ -18,8 +18,8 @@ NOTE: variables, that need to be overwritten, are written in UPPERCASE
 | Name                  | Default Value | Description                        |
 | --------------------- | ------------- | -----------------------------------|
 | `NP_SERVER_NAME` | NONE | 'A string containing the names the server (and location) shall listen to. I.e. "example.com www.example.com"' |
-| `NP_SSL_CERTIFICATE`| NONE | 'The path to your ssl certificate (fullchain.pem). I.e. /etc/letsencrypt/live/diveperience.de/fullchain.pem' |
-| `NP_SSL_CERTIFICATE_KEY` | NONE | 'The path to your ssl certificate private key (privkey.pem). I.e. /etc/letsencrypt/live/diveperience.de/privkey.pem' |
+| `NP_SSL_CERTIFICATE`| NONE | 'The path to your ssl certificate (fullchain.pem). I.e. /etc/letsencrypt/live/example.de/fullchain.pem' |
+| `NP_SSL_CERTIFICATE_KEY` | NONE | 'The path to your ssl certificate private key (privkey.pem). I.e. /etc/letsencrypt/live/example.de/privkey.pem' |
 | `NP_PROXY_PASS` | NONE | 'The path to the location. I.e. "http://127.0.0.1:8080/example/"' |
 | `NP_REWRITE` | NONE | 'Rewrite rule for the website. I.e. "^/example(.*)$ $1 last"' |
 | `np_worker_processes` | {{ ansible_processor_count }} |  'The number of worker processes nginx should use. The default is one per core, determined by the ansible setup.' |
